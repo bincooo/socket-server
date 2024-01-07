@@ -165,7 +165,7 @@ func verify(w http.ResponseWriter, r *http.Request) {
 func main() {
 	if cmd != "" {
 		go func() {
-			args := []string{"--incognito"}
+			args := []string{"--incognito", "--no-sandbox"}
 			if proxy != "" {
 				args = append(args, "--proxy-server="+proxy)
 			}
