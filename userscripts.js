@@ -113,15 +113,6 @@ function init_child(window) {
             message: "ping"
         })
         //
-        var checkbox = window.document.querySelector('#challenge-stage label.ctp-checkbox-label > input[type=checkbox]')
-        if (checkbox) {
-            postMessage(window.top, {
-                type: 'message',
-                message: "trying click checkbox."
-            })
-            debugger
-            checkbox.click()
-        }
     }, 1000)
 
     var timer
@@ -133,10 +124,25 @@ function init_child(window) {
                 type: 'message',
                 message: "success"
             })
+            return
+        }
+
+        postMessage(window.top, {
+            type: 'message',
+            message: "trying..."
+        })
+
+        var checkbox = window.document.querySelector('#challenge-stage label.ctp-checkbox-label > input[type=checkbox]')
+        if (checkbox) {
+            postMessage(window.top, {
+                type: 'message',
+                message: "trying click checkbox."
+            })
+            checkbox.click()
         } else {
             postMessage(window.top, {
                 type: 'message',
-                message: "trying..."
+                message: "not find input[type=checkbox]"
             })
         }
     }, 1000)
