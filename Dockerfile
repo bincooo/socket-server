@@ -7,6 +7,8 @@ RUN go mod tidy && GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o server -
 FROM bincooo/chrome-vnc:latest
 WORKDIR /app
 COPY --from=builder /app/server ./server
+COPY --from=builder /app/home.html ./home.html
+COPY --from=builder /app/.env ./.env
 
 ENV DISPLAY=:99
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
